@@ -1,0 +1,45 @@
+/*plugins {
+    id 'java'
+}*/
+
+//Run using: java -jar build/libs/1-graf.jar
+
+//apply plugin: "java"
+plugins {
+    id 'java'
+
+    //https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin
+    //To run this in a Docker container! rupal 22jan19
+    id 'com.google.cloud.tools.jib' version '1.0.0'
+}
+
+version 'graf'
+
+sourceSets {
+    main.java.srcDir "src/main"
+    test.java.srcDir "src/test"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.graphstream/gs-core
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    compile group: 'org.graphstream', name: 'gs-core', version: '1.1.1'
+}
+
+jar {
+    from configurations.compile.collect { zipTree it }
+    manifest.attributes("Main-class":"Grapher")
+}
+
+sourceCompatibility = 1.8
+
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
