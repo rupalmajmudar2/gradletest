@@ -56,7 +56,7 @@ jar {
     //apply from: 'gradle/docker.gradle'
 }
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.1
 
 
 
