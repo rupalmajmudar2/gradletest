@@ -2,6 +2,9 @@
     id 'java'
 }*/
 //gradlew distTar  -> to build the distribution
+//gradlew install -> explodes the tar file created in distTar - to check all the jars going out!
+//gradlew clean build -m  -> to show the tasks it'll run!
+//gradlew --version
 
 //Run using: java -jar build/libs/1-graf.jar
 
@@ -9,7 +12,7 @@
 plugins {
     id 'java'
 
-    //id 'application'
+    id 'application' //gives the distTar task creating distributions dir
 
     //https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin
     //To run this in a Docker container! rupal 22jan19
@@ -23,7 +26,7 @@ plugins {
 }
 
 version 'graf'
-//mainClassName "Grapher.main" //reqd for id 'application', not for 'java'
+mainClassName = "Grapher" //reqd for id 'application', not for 'java'
 
 sourceSets {
     main.java.srcDir "src/main"
