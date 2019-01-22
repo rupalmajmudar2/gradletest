@@ -21,8 +21,9 @@ plugins {
     //https://www.youtube.com/watch?v=fDDElwKKObc @ 28mins
     //https://bmuschko.github.io/gradle-docker-plugin/
     //supplies task: gradle dockerBuildImage
-    //id 'com.bmuschko.docker-java-application' version "2.4"
-    id 'com.bmuschko.docker-remote-api' version '4.3.0'
+
+    id 'com.bmuschko.docker-java-application' version '4.3.0'
+    //id 'com.bmuschko.docker-remote-api' version '4.3.0'
 }
 
 version 'graf'
@@ -57,7 +58,11 @@ jar {
 }
 
 sourceCompatibility = 1.8
-
+docker {
+    javaApplication {
+        maintainer = 'Rupal Majmudar "rupal_majmudar@me.com"'
+    }
+}
 
 
 dependencies {
