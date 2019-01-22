@@ -5,8 +5,10 @@
 //gradlew install -> explodes the tar file created in distTar - to check all the jars going out!
 //gradlew clean build -m  -> to show the tasks it'll run!
 //gradlew --version
+//gradlew dockerBuildImage -i  -> shows more details
 
-//Run using: java -jar build/libs/1-graf.jar
+
+//Run using: java -jar build/libs/rm_gradle-0.1.jar
 
 //apply plugin: "java"
 plugins {
@@ -26,7 +28,10 @@ plugins {
     //id 'com.bmuschko.docker-remote-api' version '4.3.0'
 }
 
-version 'graf'
+version '0.1'
+group = 'rm1357' //Used in the tag construction. Change to vloyalty - but cannot see that in VSCode ? :(
+//tag  Property<String>   <project.group>/<applicationName>:<project.version>  The tag used for the Docker image.
+
 mainClassName = "Grapher" //reqd for id 'application', not for 'java'
 
 sourceSets {
@@ -48,6 +53,7 @@ dependencies {
     compile group: 'org.graphstream', name: 'gs-core', version: '1.1.1'
 
     //classpath 'com.bmuschko:gradle-docker-plugin:4.3.0'
+    //classpath 'com.bmuschko:gradle-docker-plugin:3.2.0'
 }
 
 jar {
@@ -61,9 +67,15 @@ sourceCompatibility = 1.8
 docker {
     javaApplication {
         maintainer = 'Rupal Majmudar "rupal_majmudar@me.com"'
+        //tag = 'vloyalty'  cannot have a slash here...
+    }
+
+    registryCredentials {
+        username = 'rm1357'
+        password = 'aashna123'
+        email = 'rupal_majmudar@hotmail.com'
     }
 }
-
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'

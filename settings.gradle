@@ -1,2 +1,1 @@
-rootProject.name = '1'
-
+rootProject.name = 'rm_gradle' //The rm1357 is for DockerHub push
